@@ -1,7 +1,7 @@
 # operatingSystem
 
 
-### 실험환경
+### 🚀실험환경
 Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반 macOS 시스템
 ￼
 터미널을 이용해 물리코어와 논리 스레드 개수 확인
@@ -12,7 +12,9 @@ Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반
 
 => 하이퍼스레딩 기술이 탑재되지 않고 순수하게 물리 코어 개수 만큼만 스레드를 지원
 
-### 용어 정리
+--
+
+### 🚀용어 정리
 Race Condition (경쟁 상태)
 - 여러 개의 스레드(작업 단위)가 하나의 공유 자원(데이터)에 동시에 접근해서 값을 바꾸려고 경쟁하는 상황
 
@@ -30,8 +32,9 @@ OpenMP (Open Multi-Processing)
 - 속도를 높이면,, 정확성 하락
 
 
+--
 
-## Race Condition
+## 🚀Race Condition
 실행할 때 마다 결과가 달라짐 확인
 
 첫번째 실행  
@@ -52,8 +55,9 @@ OpenMP (Open Multi-Processing)
 4	No_Sync 	0.098256	5897646		FAIL  
 8	No_Sync 	0.110861	4065693		FAIL  
 
+--
 
-## 동기화 기법
+## 🚀동기화 기법
 
 ### 0. No_sync(동기화 없음)
 스레드 1개일 때는 SUCCESS, 
@@ -67,11 +71,11 @@ OpenMP (Open Multi-Processing)
 
 <원인> 대기하는 시간(병목 현상)과 OS가 스레드를 멈췄다 깨우는 오버헤드가 커지기 때문
 
-스레드가 
-	1개일 때 0.54초   
-	2개일 때 1.70초  
-	4개일 때 2.80초  
-	8개일 때 34.9초  
+스레드가   
+	  1개일 때 0.54초   
+	  2개일 때 1.70초  
+	  4개일 때 2.80초  
+	  8개일 때 34.9초  
 
 ### 2. Atomic
 Critical 처럼 스레드를 멈추지 않고 하드웨어(CPU) 수준에서 sum += 1 연산을 처리. 
@@ -105,7 +109,7 @@ Critical 처럼 스레드를 멈추지 않고 하드웨어(CPU) 수준에서 sum
 
 ---
 ```
-### 결과
+### 🚀 결과
 
 Threads	Mode		Avg_Time(s)	Final_Sum	Status
 -----------------------------------------------------------------------
@@ -153,7 +157,7 @@ Threads	Mode		Avg_Time(s)	Final_Sum	Status
 ---
 
 ```
-소스코드
+### 🚀소스코드
 
 #include <omp.h>
 #include <stdio.h>
