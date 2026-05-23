@@ -34,19 +34,19 @@ OpenMP (Open Multi-Processing)
 ## Race Condition
 실행할 때 마다 결과가 달라짐 확인
 
-첫번째 실행
+첫번째 실행  
 1	No_Sync 	0.043917	20000000	SUCCESS  
 2	No_Sync 	0.061566	10701723	FAIL  
 4	No_Sync 	0.078409	5826032		FAIL  
 8	No_Sync 	0.087039	3654938		FAIL  
 
-두번째 실행
+두번째 실행  
 1	No_Sync 	0.043201	20000000	SUCCESS  
 2	No_Sync 	0.075200	10180609	FAIL  
 4	No_Sync 	0.091262	5416106		FAIL  
 8	No_Sync 	0.104197	4098143		FAIL  
 
-세번째 실행
+세번째 실행  
 1	No_Sync 	0.043005	20000000	SUCCESS  
 2	No_Sync 	0.073870	10371070	FAIL  
 4	No_Sync 	0.098256	5897646		FAIL  
