@@ -5,8 +5,8 @@
 Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반 macOS 시스템
 ￼
   
-터미널을 이용해 물리코어와 논리 스레드 개수 확인
-% sysctl -n hw.physicalcpu  
+터미널을 이용해 물리코어와 논리 스레드 개수 확인  
+% sysctl -n hw.physicalcpu    
 6  
 % sysctl -n hw.logicalcpu  
 6  
