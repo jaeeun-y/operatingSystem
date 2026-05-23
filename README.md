@@ -1,10 +1,9 @@
 # operatingSystem
 
 
-실험환경
+### 실험환경
 Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반 macOS 시스템
 ￼
-
 터미널을 이용해 물리코어와 논리 스레드 개수 확인
 % sysctl -n hw.physicalcpu
 6
@@ -13,7 +12,7 @@ Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반
 
 => 하이퍼스레딩 기술이 탑재되지 않고 순수하게 물리 코어 개수 만큼만 스레드를 지원
 
-용어 정리
+### 용어 정리
 Race Condition (경쟁 상태)
 - 여러 개의 스레드(작업 단위)가 하나의 공유 자원(데이터)에 동시에 접근해서 값을 바꾸려고 경쟁하는 상황
 
@@ -32,7 +31,7 @@ OpenMP (Open Multi-Processing)
 
 
 
-Race Condition
+## Race Condition
 실행할 때 마다 결과가 달라짐 확인
 
 첫번째 실행
@@ -54,15 +53,15 @@ Race Condition
 8	No_Sync 	0.110861		4065693	FAIL
 
 
-동기화 기법
+## 동기화 기법
 
-   0. No_sync(동기화 없음)
+### 0. No_sync(동기화 없음)
 스레드 1개일 때는 SUCCESS, 
 스레드가 2개, 4개, 8개로 늘어날수록 Final_Sum 값이 줄어들며 FAIL이 뜸.
 
 <원인> 스레드가 여러개가 되면 하나의 공유변수(sum)에 동시에 접근하는 Race Condition이 발생함.
 
-1. Critical 
+### 1. Critical 
 임계구역에 단 하나의 스레드만 들어가도록 통제.
 스레드가 많아질 수록 속도가 엄청나게 느려짐.
 
@@ -74,7 +73,7 @@ Race Condition
 	4개일 때 2.80초
 	8개일 때 34.9초
 
-2. Atomic
+### 2. Atomic
 Critical 처럼 스레드를 멈추지 않고 하드웨어(CPU) 수준에서 sum += 1 연산을 처리. 
 
 <원인> 여러 스레드가 하나의 메모리 주소에 계속 신호를 보내기 때문에 스레드가 늘어나도 성능이 더 빨라지진 않음.
@@ -84,7 +83,7 @@ Critical 처럼 스레드를 멈추지 않고 하드웨어(CPU) 수준에서 sum
 	4개일 때 0.32초
 	8개일 때 0.36초
 
-3. Reduction 
+### 3. Reduction 
 스레드마다 각자의 독립된 지역 변수를 채워주고 서로 간섭 없이 독립적으로 연산을 수행하게 한다.
 연산이 완전히 끝난 시점에 딱 한번만 결과를 합치기 때문에 락(lock)으로 인한 대기시간이 전혀 없다.
 멀티코어를 쓰면 쓸수록 속도가 정비례해서 빨라진다.
@@ -104,7 +103,7 @@ Critical 처럼 스레드를 멈추지 않고 하드웨어(CPU) 수준에서 sum
 
 ---
 ```
-결과
+### 결과
 
 Threads	Mode		Avg_Time(s)	Final_Sum	Status
 -----------------------------------------------------------------------
@@ -140,13 +139,13 @@ Threads	Mode		Avg_Time(s)	Final_Sum	Status
 -----------------------------------------------------------------------
 
 [실험 결과 요약 표]
-스레드 수	No_Sync (동기화 없음)	Critical (크리티컬 섹션)	Atomic (아토믹)	Reduction (리덕션)
-1	0.043005초 (SUCCESS)	0.547087초 (SUCCESS)	0.119706초 (SUCCESS)	0.039359초 (SUCCESS)
-2	0.073870초 (FAIL)	1.784733초 (SUCCESS)	0.402561초 (SUCCESS)	0.020522초 (SUCCESS)
-4	0.098256초 (FAIL)	2.963704초 (SUCCESS)	0.384558초 (SUCCESS)	0.010248초 (SUCCESS)
-6 	0.101874초 (FAIL)	4.150069초 (SUCCESS)	0.385600초 (SUCCESS)	0.007821초 (최고 속도)
+스레드 수		No_Sync (동기화 없음)	Critical (크리티컬 섹션)	Atomic (아토믹)		Reduction (리덕션)
+1			0.043005초 (SUCCESS)	0.547087초 (SUCCESS)		0.119706초 (SUCCESS)	0.039359초 (SUCCESS)
+2			0.073870초 (FAIL)	1.784733초 (SUCCESS)		0.402561초 (SUCCESS)	0.020522초 (SUCCESS)
+4			0.098256초 (FAIL)	2.963704초 (SUCCESS)		0.384558초 (SUCCESS)	0.010248초 (SUCCESS)
+6 			0.101874초 (FAIL)	4.150069초 (SUCCESS)		0.385600초 (SUCCESS)	0.007821초 (최고 속도)
 8 (과부하)	0.110861초 (FAIL)	35.051122초 (SUCCESS)	0.390314초 (SUCCESS)	0.010080초 (속도 저하)
-16 (과부하)	0.104206초 (FAIL)	93.607688초 (SUCCESS)	0.386277초 (SUCCESS)	0.008012초 (속도 정체)
+16(과부하)	0.104206초 (FAIL)	93.607688초 (SUCCESS)	0.386277초 (SUCCESS)	0.008012초 (속도 정체)
 ```
 
 ---
