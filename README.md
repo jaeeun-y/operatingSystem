@@ -4,13 +4,14 @@
 ## 🚀 실험환경
 Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반 macOS 시스템
 ￼
+  
 터미널을 이용해 물리코어와 논리 스레드 개수 확인
-% sysctl -n hw.physicalcpu
-6
-% sysctl -n hw.logicalcpu
-6
-
-=> 하이퍼스레딩 기술이 탑재되지 않고 순수하게 물리 코어 개수 만큼만 스레드를 지원
+% sysctl -n hw.physicalcpu  
+6  
+% sysctl -n hw.logicalcpu  
+6  
+  
+=> 하이퍼스레딩 기술이 탑재되지 않고 순수하게 물리 코어 개수 만큼만 스레드를 지원  
 
 
 
