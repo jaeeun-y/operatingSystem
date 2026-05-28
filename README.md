@@ -13,6 +13,7 @@ Intel Core 프로세서 (6-Core / 6-Thread, 하이퍼스레딩 미지원) 기반
   
 => 하이퍼스레딩 기술이 탑재되지 않고 순수하게 물리 코어 개수 만큼만 스레드를 지원  
 
+<img width="1368" height="666" alt="image" src="https://github.com/user-attachments/assets/e7609fbd-8222-46a0-9764-36e714fad33f" />
 
 
 ## 🚀용어 정리
@@ -112,7 +113,7 @@ Critical 처럼 스레드를 멈추지 않고 하드웨어(CPU) 수준에서 sum
 ```
 ## 🚀 결과
 
-Threads	Mode		Avg_Time(s)	Final_Sum	Status
+Threads	Mode	Avg_Time(s)	Final_Sum	Status
 -----------------------------------------------------------------------
 1	No_Sync 	0.043005	20000000	SUCCESS
 1	Critical	0.547087	20000000	SUCCESS
@@ -144,6 +145,8 @@ Threads	Mode		Avg_Time(s)	Final_Sum	Status
 16	Atomic  	0.386277	20000000	SUCCESS
 16	Reduction	0.008012	20000000	SUCCESS
 -----------------------------------------------------------------------
+
+
 
 [실험 결과 요약 표]
 스레드 수		No_Sync (동기화 없음)	Critical (크리티컬 섹션)	Atomic (아토믹)		Reduction (리덕션)
