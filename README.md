@@ -261,3 +261,7 @@ int main() {
     return 0;
 }
 ```
+
+## 🚀실행 화면 캡쳐
+
+<img width="2518" height="1924" alt="image" src="https://github.com/user-attachments/assets/8028f9ce-842c-45ef-aa15-0f21f0ce8588" />
